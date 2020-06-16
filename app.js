@@ -18,6 +18,14 @@ app.get("/", function(req, res){
     res.render("home", {startText :homeStartingContent});
 });
 
+app.get("/about", function (req,res){
+    res.render("about", {startText : aboutContent});
+});
+
+app.get("/contact", function (req, res) {
+    res.render("about", {startText : contactContent});
+})
+
 
 
 
