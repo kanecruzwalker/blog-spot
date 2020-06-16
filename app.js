@@ -26,6 +26,10 @@ app.get("/contact", function (req, res) {
     res.render("about", {startText : contactContent});
 })
 
+app.get("/compose", function (req, res){
+    res.render("compose" );
+});
+
 
 
 
