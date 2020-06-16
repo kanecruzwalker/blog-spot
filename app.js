@@ -49,6 +49,10 @@ app.post("/compose", function (req, res){
 
 });
 
+app.get("/posts/:post", function (req, res){
+    console.log(req.params.post);
+});
+
 
 
 
