@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require("lodash");
 
 const homeStartingContent= "I am home staring Content"
 const aboutContent = "I am about starting content";
@@ -50,17 +51,17 @@ app.post("/compose", function (req, res){
 });
 
 app.get("/posts/:post", function (req, res){
-    const requestedTitle = req.params.post;
+    const requestedTitle = _.lowerCase(req.params.post);
 
     posts.forEach(function (post){
-        let storedTitle = post.title;
-        console.log(storedTitle);
+        let storedTitle = _.lowerCase(post.title);
         if (storedTitle === requestedTitle){
             console.log("Match Found");
         }else {
             console.log("Match not found")
         }
     });
+
 
 });
 
