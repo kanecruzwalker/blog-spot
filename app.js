@@ -7,6 +7,7 @@ const homeStartingContent= "I am home staring Content"
 const aboutContent = "I am about starting content";
 const contactContent = "I am contact content";
 
+let posts = []
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -15,7 +16,11 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
-    res.render("home", {startText :homeStartingContent});
+    res.render("home", {
+        startText :homeStartingContent, 
+        posts : posts
+    });
+
 });
 
 app.get("/about", function (req,res){
@@ -30,11 +35,17 @@ app.get("/compose", function (req, res){
     res.render("compose" );
 });
 
+
 app.post("/compose", function (req, res){
     var title = req.body.postTitle
     var post = req.body.postContent
-    console.log(title);
-    console.log(post);
+    const published = {
+        title : title,
+        content : post,
+    }
+
+    posts.push(published);
+    res.redirect("/");
 
 });
 

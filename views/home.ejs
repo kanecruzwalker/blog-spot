@@ -2,5 +2,20 @@
 
 <h1>home</h1>
 <p> <%= startText %> </p>
+<% console.log(posts); %>
+
+
+
+<% posts.forEach(function(post){ %>
+    <h1> <%=console.log(post.title)%></h1>
+
+    <h1> <%= post.title %> </h1>
+    <p> <%= post.content %> </p>
+    <% }) %>
+    
+    <p> <%= console.log(posts) %> </p>
+
+
+
 
 <%- include("partials/footer") -%>
