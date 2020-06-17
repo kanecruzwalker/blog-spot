@@ -51,11 +51,13 @@ app.post("/compose", function (req, res){
 });
 
 app.get("/posts/:post", function (req, res){
-    const requestedTitle = _.lowerCase(req.params.post);
+    const requestedTitle = req.params.post;
+    const reqUpper = _.lowerCase(requestedTitle);
 
     posts.forEach(function (post){
-        let storedTitle = _.lowerCase(post.title);
-        if (storedTitle === requestedTitle){
+        const storedTitle = post.title;
+        const storedLower = _.lowerCase(storedTitle);
+        if (reqUpper === storedLower){
             console.log("Match Found");
         }else {
             console.log("Match not found")
